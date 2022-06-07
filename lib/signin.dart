@@ -1,11 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:listview_in_blocpattern/SignUpPage.dart';
 import 'package:listview_in_blocpattern/auth_service.dart';
 import 'package:listview_in_blocpattern/database_manager.dart';
+import 'package:listview_in_blocpattern/home_page.dart';
 import 'package:provider/provider.dart';
 
-
-//This is SignIn page 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
 
@@ -14,21 +13,16 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-
-  //These are the controller to fetch the name , email and password 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
-
-
-  //Basic UI for Signin page with text fields , textediting controller and signin and signup method   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
           child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
           Container(
@@ -38,7 +32,6 @@ class _SignInPageState extends State<SignInPage> {
                 'Sign in',
                 style: TextStyle(fontSize: 20),
               )),
-         
           Container(
             padding: const EdgeInsets.all(10),
             child: TextField(
@@ -48,6 +41,9 @@ class _SignInPageState extends State<SignInPage> {
                 labelText: 'User Email',
               ),
             ),
+          ),
+          SizedBox(
+            height: 20,
           ),
           Container(
             padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
@@ -69,13 +65,11 @@ class _SignInPageState extends State<SignInPage> {
               child: ElevatedButton(
                 child: const Text('Login'),
                 onPressed: () {
-
-                  //If thsis button is pressed then the user in signed with the specific email and password by calling the 
-                  //signIn method from Databasemanager 
-                  context.read<AuthService>().signIn(
+                context.read<AuthService>().signIn(
                       email: emailController.text.trim(),
-                      password: passwordController.text.trim()
-                );
+                      password: passwordController.text.trim());
+                // Navigator.push(context,
+                //       MaterialPageRoute(builder: (context) => HomePage()));
                 },
               )),
           SizedBox(
@@ -85,14 +79,15 @@ class _SignInPageState extends State<SignInPage> {
               height: 50,
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: ElevatedButton(
-                  child: const Text('SignUp'),
-                  onPressed: () {
-
-                    //If the user has not created an acount this is for Sign up authetication with the help of SignUp page 
-                    context.read<AuthService>().signUp(
-                        email: emailController.text.trim(),
-                        password: passwordController.text.trim());
-                  })),
+                child: const Text('SignUp'),
+                onPressed: () {
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => SignUpPage()));
+                },
+              )),
+          SizedBox(
+            height: 20,
+          )
         ],
       )),
     );
@@ -100,3 +95,4 @@ class _SignInPageState extends State<SignInPage> {
 }
 
 
+//in the next we are going to prof
