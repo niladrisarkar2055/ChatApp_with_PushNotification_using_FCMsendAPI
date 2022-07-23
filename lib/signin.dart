@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:listview_in_blocpattern/SignUpPage.dart';
 import 'package:listview_in_blocpattern/auth_service.dart';
-import 'package:listview_in_blocpattern/database_manager.dart';
-import 'package:listview_in_blocpattern/home_page.dart';
 import 'package:provider/provider.dart';
+
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -42,7 +40,7 @@ class _SignInPageState extends State<SignInPage> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
@@ -56,7 +54,7 @@ class _SignInPageState extends State<SignInPage> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
@@ -72,7 +70,7 @@ class _SignInPageState extends State<SignInPage> {
                 //       MaterialPageRoute(builder: (context) => HomePage()));
                 },
               )),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
@@ -85,7 +83,7 @@ class _SignInPageState extends State<SignInPage> {
                   //     MaterialPageRoute(builder: (context) => SignUpPage()));
                 },
               )),
-          SizedBox(
+          const SizedBox(
             height: 20,
           )
         ],
@@ -93,6 +91,3 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 }
-
-
-//in the next we are going to prof

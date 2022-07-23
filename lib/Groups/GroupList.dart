@@ -8,14 +8,14 @@ import 'package:listview_in_blocpattern/database_manager.dart';
 import 'package:listview_in_blocpattern/multiselect.dart';
 import 'package:listview_in_blocpattern/userModel.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class GroupList extends StatefulWidget {
+  const GroupList({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<GroupList> createState() => _GroupListState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _GroupListState extends State<GroupList> {
   List<dynamic> Users = [];
   List<dynamic> groups = [];
   List<String> userEmails = [];
@@ -24,11 +24,11 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     fetchuserInfo();
-    _fetchGroupList();
+    fetchGroupList();
     super.initState();
   }
 
-  _fetchGroupList() async {
+  fetchGroupList() async {
     dynamic resultGroups = await DatabaseManager().fetchGroupList();
     if (resultGroups == null) {
       print('Error in retriving UserData');
@@ -84,7 +84,8 @@ class _HomePageState extends State<HomePage> {
                             builder: (BuildContext context) => MultiSelect(
                                   senderUID: user.email,
                                   userEmails: userEmails,
-                                )));
+                                )
+                                ));
                   }),
                   child: Text('+ Grp')),
               ElevatedButton(
@@ -101,31 +102,8 @@ class _HomePageState extends State<HomePage> {
         // there is the name of t
 
         body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ListView.builder(
-                itemCount: Users.length,
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                padding: EdgeInsets.only(top: 16),
-                itemBuilder: (context, index) {
-                  return (currUserEmail == Users[index]['Email'])
-                      ? Container()
-                      : ChatList(
-                          imageUrl: 'assets/avatar1.png',
-                          date: '10/05',
-                          receieverTokens: Users[index]['Token'],
-                          // usertoken: user.
-                          //ChatroomId
-                          chatroomId:
-                              // getChatRoomId(user.uId!, Users[index]['uID']),
-                              getChatRoomId(user.email, Users[index]['Email']),
-                          sender: user.email,
-                          receiver: Users[index]['Email']);
-                },
-              ),
-              ListView.builder(
+          
+              child:ListView.builder(
                 itemCount: groups.length,
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
@@ -142,8 +120,7 @@ class _HomePageState extends State<HomePage> {
                       receiver: groups[index]['group_name']);
                 },
               ),
-            ],
-          ),
+           
         ));
   }
 }

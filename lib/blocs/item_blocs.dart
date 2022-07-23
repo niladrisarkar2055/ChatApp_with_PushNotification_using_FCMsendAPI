@@ -19,10 +19,10 @@ class ItemBloc extends Bloc<ItemEvent, ItemState> {
     on<SendMessage>((event, emit) async {
       emit(ItemLoadingState());
       // try {
-        ApiResultModel items = await repository.sendMessage(event.token, event.title, event.body);
+        ApiResultModel items = await repository.sendMessage(event.token, event.title, event.body, event.chatRoomID, event.senderToken, event.SenderEmail);
         emit(ItemLoadedState(items: items));
       //  } catch (e) {
-        // emit(ItemErrorState(message: e.toString()));
+      //   emit(ItemErrorState(message: e.toString()));
       // }
     });
   }

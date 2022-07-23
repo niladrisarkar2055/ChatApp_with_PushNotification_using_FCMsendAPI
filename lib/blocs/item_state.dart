@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 import 'package:listview_in_blocpattern/data/models/Models.dart';
 
 
-
 //Declearing all the states of our feature
 abstract class ItemState extends Equatable {}
 

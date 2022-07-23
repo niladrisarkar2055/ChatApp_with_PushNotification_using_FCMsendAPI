@@ -1,8 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:listview_in_blocpattern/SignUpPage.dart';
-
 class AuthService {
   final FirebaseAuth _firebaseAuth;
   AuthService(this._firebaseAuth);
@@ -22,7 +18,7 @@ class AuthService {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
-      
+
       return "Signed In";
     } on FirebaseAuthException catch (e) {
       return e.toString();
